@@ -33,6 +33,7 @@ namespace MBusWMSim
         mbreqrep _mbrr;
         byte _req_process_status;
         WMparam _wmparam;
+        UInt16 _Active_records = 0x0003; 
         #endregion
 
         #region Methods Init and constructs
@@ -111,6 +112,8 @@ namespace MBusWMSim
         private void Sp1_onRec(object sender, spRecEv e)
         {
             su1.SetRichText(txtr_main,"Master Request: " + BitConverter.ToString(e.data_byte), Color.Pink);
+            update_wm_data_record_params();
+            _mbrr.WaterMeterParams = _wmparam;
             _req_process_status =  _mbrr.process_req(e.data_byte);
         }
         private void Sp1_onEv(object sender, spEvents e)
@@ -209,9 +212,10 @@ namespace MBusWMSim
         {
             _wmparam.Temprature = (float)temprature;
             _wmparam.Volume = (UInt32) volume;
-            _wmparam.ErrorCode = (UInt32)cbx_binary_err_code.SelectedIndex;
+            //_wmparam.ErrorCode = (UInt32)cbx_binary_err_code.SelectedIndex;
             _wmparam.Flowrate = (float)flow_rate;
             _wmparam.OnTime = 1000;
+            _wmparam.Records = _Active_records;
         }
         private void btn_update_wm_settings_Click(object sender, EventArgs e)
         {
@@ -239,5 +243,118 @@ namespace MBusWMSim
             }
         }
         #endregion
+
+        #region Paramere Change
+        private void cbx_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbx_binary_err_code_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chk_dt_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_dt.Checked)
+            {
+                _Active_records |= (1 << 0);
+            }
+            else
+            {
+                _Active_records &= 0xFFFE;
+            }
+            
+        }
+
+        private void chk_vol_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_vol.Checked)
+            {
+                _Active_records |= (1 << 1);
+            }
+            else
+            {
+                _Active_records &= 0xFFFD;
+            }
+        }
+
+        private void chk_rev_volume_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_rev_volume.Checked)
+            {
+                _Active_records |= (1 << 2);
+            }
+            else
+            {
+                _Active_records &= 0xFFFB;
+            }
+        }
+
+        private void chk_flowrate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_flowrate.Checked)
+            {
+                _Active_records |= (1 << 3);
+            }
+            else
+            {
+                _Active_records &= 0xFFF7;
+            }
+        }
+
+        private void chk_temp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_temp.Checked)
+            {
+                _Active_records |= (1 << 4);
+            }
+            else
+            {
+                _Active_records &= 0xFFEF;
+            }
+        }
+
+        private void chk_serial_no_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_serial_no.Checked)
+            {
+                _Active_records |= (1 << 5);
+            }
+            else
+            {
+                _Active_records &= 0xFFDF;
+            }
+        }
+
+        private void chk_ontime_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_ontime.Checked)
+            {
+                _Active_records |= (1 << 6);
+            }
+            else
+            {
+                _Active_records &= 0xFFBF;
+            }
+        }
+
+        private void chk_err_code_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_err_code.Checked)
+            {
+                _Active_records |= (1 << 7);
+            }
+            else
+            {
+                _Active_records &= 0xFF7F;
+            }
+        }
+
+
+        #endregion
+
+
     }
 }

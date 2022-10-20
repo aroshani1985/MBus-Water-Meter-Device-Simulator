@@ -32,6 +32,7 @@ namespace MBusWMSim.mbus
 
         public struct WMparam
         {
+            public UInt16 Records;
             public UInt32 Volume;
             public float  Flowrate;
             public float  Temprature;
@@ -149,12 +150,22 @@ namespace MBusWMSim.mbus
                 statuscode sc = new statuscode(statuscode.AlarmType.Leakage);
                 pkthead head = new pkthead(0x00000001, 0xAABB, 0x07, 1, sc.Status);
                 //wmdatarec wmd = new wmdatarec();
-                wmdatarec wmd = new wmdatarec(_wmparam.Volume, _wmparam.Flowrate, _wmparam.Temprature, _wmparam.OnTime, _wmparam.ErrorCode);
+                wmdatarec wmd = new wmdatarec(_wmparam.Volume, _wmparam.Flowrate, _wmparam.Temprature, _wmparam.OnTime, _wmparam.ErrorCode, _wmparam.Records);
                 //byte[] header = { 0x78, 0x56, 0x34, 0x12, 0x24, 0x40, 0x01, 0x07, 0x55, 0x00, 0x00, 0x00 };
                 //byte[] data = { 0x03, 0x13, 0x15, 0x31, 0x00, 0xDA, 0x02, 0x3B, 0x13, 0x01, 0x8B, 0x60, 0x04, 0x37, 0x18, 0x02 };
                 longmsg lmsg1 = new longmsg(_slave_current_address, head.HeaderPacket, wmd.WaterMeter_All_Records());
                 _sp.SendArray(lmsg1.Packet, lmsg1.Packet.Length);
                 _sput.SetRichText(_rtb, "Slave Reply: " + BitConverter.ToString(lmsg1.Packet), Color.Aqua);
+            }
+        }
+        #endregion
+
+        #region Properties
+        public WMparam WaterMeterParams
+        {
+            set
+            {
+                _wmparam = value;
             }
         }
         #endregion

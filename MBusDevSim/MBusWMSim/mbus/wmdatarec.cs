@@ -15,6 +15,9 @@ namespace MBusWMSim.mbus
         float _temprature;
         UInt32 _err_code;
         UInt32 _on_time;
+        UInt16 _arecords;
+        byte _active_data_len;
+        byte[] _records_len = new byte[] { 6, 6, 7, 6, 6, 6, 6, 5, 7 };
         public struct Datarecord
         {
 
@@ -35,13 +38,14 @@ namespace MBusWMSim.mbus
         {
 
         }
-        public wmdatarec(UInt32 Volume, float Flowrate, float Temprature, UInt32 OnTime, UInt32 ErrorCode)
+        public wmdatarec(UInt32 Volume, float Flowrate, float Temprature, UInt32 OnTime, UInt32 ErrorCode, UInt16 ActiveRecords)
         {
             _volume = Volume;
             _flowrate = Flowrate;
             _temprature = Temprature;
             _err_code = ErrorCode;
             _on_time = OnTime;
+            _arecords = ActiveRecords;
         }
         #endregion
 
@@ -310,34 +314,76 @@ namespace MBusWMSim.mbus
         public byte[] WaterMeter_All_Records()
         {
             // 6 + 6 + 7 + 6 + 6 + 6 + 6 + 5 + 7
-            byte[] data = new byte[55];
+            byte[] buff;
+            _active_data_len = 0;
+            int curr_idx = 0;
+            for(int i = 0; i<8; i++)
+            {
+                if((_arecords & (1<<i)) != 0)
+                {
+                    _active_data_len += _records_len[i];
+                }
+            }
+            byte[] data = new byte[_active_data_len];
 
-            byte[] buff = DateTime_Record();
-            Array.Copy(buff, 0, data, 0, buff.Length);
+            if((_arecords & 0x0001)  > 0)
+            {
+                buff = DateTime_Record();
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = Volume_Record(_volume);
-            Array.Copy(buff, 0, data, 6, buff.Length);
+            if ((_arecords & 0x0002) > 0)
+            {
+                buff = Volume_Record(_volume);
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = Volume_Reverse_Record(0);
-            Array.Copy(buff, 0, data, 12, buff.Length);
+            if ((_arecords & 0x0004) > 0)
+            {
+                buff = Volume_Reverse_Record(0);
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = Serial_Number_Record(12345678);
-            Array.Copy(buff, 0, data, 19, buff.Length);
+            if ((_arecords & 0x0008) > 0)
+            {
+                buff = FlowRate_Record(_flowrate);
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = FlowRate_Record(_flowrate);
-            Array.Copy(buff, 0, data, 25, buff.Length);
+            if ((_arecords & 0x0010) > 0)
+            {
+                buff = Temperature_Record(_temprature);
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = Temperature_Record(_temprature);
-            Array.Copy(buff, 0, data, 31, buff.Length);
+            if ((_arecords & 0x0020) > 0)
+            {
+                buff = Serial_Number_Record(12345678);
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = Battery_Operation_Time_Record(_on_time);
-            Array.Copy(buff, 0, data, 37, buff.Length);
+            if ((_arecords & 0x0040) > 0)
+            {
+                buff = Battery_Operation_Time_Record(_on_time);
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = Error_Flag_Binary_Record(0x0002);
-            Array.Copy(buff, 0, data, 43, buff.Length);
+            if ((_arecords & 0x0080) > 0)
+            {
+                buff = Error_Flag_Binary_Record(0x0002);
+                Array.Copy(buff, 0, data, curr_idx, buff.Length);
+                curr_idx += buff.Length;
+            }
 
-            buff = Error_Code_Record(0x0002);
-            Array.Copy(buff, 0, data, 48, buff.Length);
+            //buff = Error_Code_Record(0x0002);
+            //Array.Copy(buff, 0, data, 48, buff.Length);
 
             return data;
         }

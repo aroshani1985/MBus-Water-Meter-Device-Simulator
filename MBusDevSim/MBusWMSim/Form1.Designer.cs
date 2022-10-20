@@ -67,9 +67,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbx_binary_err_code = new System.Windows.Forms.ComboBox();
             this.cbx_status = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.chk_err_code = new System.Windows.Forms.CheckBox();
+            this.chk_ontime = new System.Windows.Forms.CheckBox();
+            this.chk_flowrate = new System.Windows.Forms.CheckBox();
             this.chk_serial_no = new System.Windows.Forms.CheckBox();
             this.chk_temp = new System.Windows.Forms.CheckBox();
             this.chk_rev_volume = new System.Windows.Forms.CheckBox();
@@ -491,9 +491,9 @@
             // 
             this.groupBox3.Controls.Add(this.cbx_binary_err_code);
             this.groupBox3.Controls.Add(this.cbx_status);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.checkBox3);
+            this.groupBox3.Controls.Add(this.chk_err_code);
+            this.groupBox3.Controls.Add(this.chk_ontime);
+            this.groupBox3.Controls.Add(this.chk_flowrate);
             this.groupBox3.Controls.Add(this.chk_serial_no);
             this.groupBox3.Controls.Add(this.chk_temp);
             this.groupBox3.Controls.Add(this.chk_rev_volume);
@@ -529,6 +529,7 @@
             this.cbx_binary_err_code.Name = "cbx_binary_err_code";
             this.cbx_binary_err_code.Size = new System.Drawing.Size(187, 29);
             this.cbx_binary_err_code.TabIndex = 10;
+            this.cbx_binary_err_code.SelectedIndexChanged += new System.EventHandler(this.cbx_binary_err_code_SelectedIndexChanged);
             // 
             // cbx_status
             // 
@@ -546,78 +547,73 @@
             this.cbx_status.Name = "cbx_status";
             this.cbx_status.Size = new System.Drawing.Size(187, 29);
             this.cbx_status.TabIndex = 10;
+            this.cbx_status.SelectedIndexChanged += new System.EventHandler(this.cbx_status_SelectedIndexChanged);
             // 
-            // checkBox1
+            // chk_err_code
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(170, 230);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(107, 25);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Error code";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chk_err_code.AutoSize = true;
+            this.chk_err_code.Location = new System.Drawing.Point(170, 230);
+            this.chk_err_code.Name = "chk_err_code";
+            this.chk_err_code.Size = new System.Drawing.Size(107, 25);
+            this.chk_err_code.TabIndex = 7;
+            this.chk_err_code.Text = "Error code";
+            this.chk_err_code.UseVisualStyleBackColor = true;
+            this.chk_err_code.CheckedChanged += new System.EventHandler(this.chk_err_code_CheckedChanged);
             // 
-            // checkBox2
+            // chk_ontime
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(170, 207);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(96, 25);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "ON Time";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chk_ontime.AutoSize = true;
+            this.chk_ontime.Location = new System.Drawing.Point(170, 207);
+            this.chk_ontime.Name = "chk_ontime";
+            this.chk_ontime.Size = new System.Drawing.Size(96, 25);
+            this.chk_ontime.TabIndex = 8;
+            this.chk_ontime.Text = "ON Time";
+            this.chk_ontime.UseVisualStyleBackColor = true;
+            this.chk_ontime.CheckedChanged += new System.EventHandler(this.chk_ontime_CheckedChanged);
             // 
-            // checkBox3
+            // chk_flowrate
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(170, 181);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(95, 25);
-            this.checkBox3.TabIndex = 9;
-            this.checkBox3.Text = "Flowrate";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chk_flowrate.AutoSize = true;
+            this.chk_flowrate.Location = new System.Drawing.Point(24, 230);
+            this.chk_flowrate.Name = "chk_flowrate";
+            this.chk_flowrate.Size = new System.Drawing.Size(95, 25);
+            this.chk_flowrate.TabIndex = 9;
+            this.chk_flowrate.Text = "Flowrate";
+            this.chk_flowrate.UseVisualStyleBackColor = true;
+            this.chk_flowrate.CheckedChanged += new System.EventHandler(this.chk_flowrate_CheckedChanged);
             // 
             // chk_serial_no
             // 
             this.chk_serial_no.AutoSize = true;
-            this.chk_serial_no.Checked = true;
-            this.chk_serial_no.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_serial_no.Location = new System.Drawing.Point(170, 155);
+            this.chk_serial_no.Location = new System.Drawing.Point(170, 181);
             this.chk_serial_no.Name = "chk_serial_no";
             this.chk_serial_no.Size = new System.Drawing.Size(99, 25);
             this.chk_serial_no.TabIndex = 6;
             this.chk_serial_no.Text = "Serial No";
             this.chk_serial_no.UseVisualStyleBackColor = true;
+            this.chk_serial_no.CheckedChanged += new System.EventHandler(this.chk_serial_no_CheckedChanged);
             // 
             // chk_temp
             // 
             this.chk_temp.AutoSize = true;
-            this.chk_temp.Checked = true;
-            this.chk_temp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_temp.Location = new System.Drawing.Point(24, 230);
+            this.chk_temp.Location = new System.Drawing.Point(170, 155);
             this.chk_temp.Name = "chk_temp";
             this.chk_temp.Size = new System.Drawing.Size(117, 25);
             this.chk_temp.TabIndex = 5;
             this.chk_temp.Text = "Temprature";
             this.chk_temp.UseVisualStyleBackColor = true;
+            this.chk_temp.CheckedChanged += new System.EventHandler(this.chk_temp_CheckedChanged);
             // 
             // chk_rev_volume
             // 
             this.chk_rev_volume.AutoSize = true;
-            this.chk_rev_volume.Checked = true;
-            this.chk_rev_volume.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_rev_volume.Location = new System.Drawing.Point(24, 207);
             this.chk_rev_volume.Name = "chk_rev_volume";
             this.chk_rev_volume.Size = new System.Drawing.Size(120, 25);
             this.chk_rev_volume.TabIndex = 5;
             this.chk_rev_volume.Text = "Rev Volume";
             this.chk_rev_volume.UseVisualStyleBackColor = true;
+            this.chk_rev_volume.CheckedChanged += new System.EventHandler(this.chk_rev_volume_CheckedChanged);
             // 
             // chk_vol
             // 
@@ -630,6 +626,7 @@
             this.chk_vol.TabIndex = 5;
             this.chk_vol.Text = "Volume";
             this.chk_vol.UseVisualStyleBackColor = true;
+            this.chk_vol.CheckedChanged += new System.EventHandler(this.chk_vol_CheckedChanged);
             // 
             // chk_dt
             // 
@@ -642,6 +639,7 @@
             this.chk_dt.TabIndex = 4;
             this.chk_dt.Text = "Time point";
             this.chk_dt.UseVisualStyleBackColor = true;
+            this.chk_dt.CheckedChanged += new System.EventHandler(this.chk_dt_CheckedChanged);
             // 
             // label17
             // 
@@ -747,9 +745,9 @@
         private System.Windows.Forms.Button btn_update_wm_settings;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox chk_err_code;
+        private System.Windows.Forms.CheckBox chk_ontime;
+        private System.Windows.Forms.CheckBox chk_flowrate;
         private System.Windows.Forms.CheckBox chk_serial_no;
         private System.Windows.Forms.CheckBox chk_temp;
         private System.Windows.Forms.CheckBox chk_rev_volume;
