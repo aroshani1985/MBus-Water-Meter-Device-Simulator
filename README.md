@@ -2,14 +2,14 @@
 Wired M-Bus Water Meter Device Simulator 
 
 <p align="center">
-  <img src="MBus-Water-Meter-Simulator-02.PNG" width="400" title="hover text">
+  <img src="Images/MBus-Water-Meter-Simulator-02.PNG" width="400" title="hover text">
 </p>
 <p align="center">
-  <img src="MBus-Master-Test-03" width="400" title="hover text">
+  <img src="Images/MBus-Master-Test-03" width="400" title="hover text">
 </p>
 
 # Project goals
-  - Simple Wired M-Bus software device for testig M-bus protocol
+  - Simple Wired M-Bus software device for testing M-bus protocol
   - Study communication protocol between M-Bus master and M-Bus slave
 
 # Water Meter Features
