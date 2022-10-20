@@ -35,6 +35,7 @@ namespace MBusWMSim
         public Form1()
         {
             InitializeComponent();
+            Init_UI();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -50,6 +51,13 @@ namespace MBusWMSim
                 sp1.Close();
                 is_sp_open = false;
             }
+        }
+
+        void Init_UI()
+        {
+            cbx_binary_err_code.SelectedIndex = 0;
+            cbx_status.SelectedIndex = 0;
+
         }
         #endregion
 

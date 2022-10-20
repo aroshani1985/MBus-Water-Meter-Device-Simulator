@@ -54,27 +54,41 @@
             this.btn_stop_wm = new System.Windows.Forms.Button();
             this.btn_start_wm = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tim_wm = new System.Windows.Forms.Timer(this.components);
+            this.btn_update_wm_settings = new System.Windows.Forms.Button();
+            this.nud_temp = new System.Windows.Forms.NumericUpDown();
+            this.nud_flowrate = new System.Windows.Forms.NumericUpDown();
+            this.nud_volume = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.nud_volume = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.nud_flowrate = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.nud_temp = new System.Windows.Forms.NumericUpDown();
-            this.btn_update_wm_settings = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbx_binary_err_code = new System.Windows.Forms.ComboBox();
+            this.cbx_status = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.chk_serial_no = new System.Windows.Forms.CheckBox();
+            this.chk_temp = new System.Windows.Forms.CheckBox();
+            this.chk_rev_volume = new System.Windows.Forms.CheckBox();
+            this.chk_vol = new System.Windows.Forms.CheckBox();
+            this.chk_dt = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tim_wm = new System.Windows.Forms.Timer(this.components);
             this.tlb_main.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tlb_sp.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_volume)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_flowrate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_temp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_flowrate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_volume)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlb_main
@@ -365,69 +379,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Settings";
             // 
-            // groupBox3
+            // btn_update_wm_settings
             // 
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(615, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(302, 279);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Status and Errors";
+            this.btn_update_wm_settings.Location = new System.Drawing.Point(62, 220);
+            this.btn_update_wm_settings.Name = "btn_update_wm_settings";
+            this.btn_update_wm_settings.Size = new System.Drawing.Size(178, 43);
+            this.btn_update_wm_settings.TabIndex = 4;
+            this.btn_update_wm_settings.Text = "Update Setting";
+            this.btn_update_wm_settings.UseVisualStyleBackColor = true;
+            this.btn_update_wm_settings.Click += new System.EventHandler(this.btn_update_wm_settings_Click);
             // 
-            // tim_wm
+            // nud_temp
             // 
-            this.tim_wm.Interval = 1000;
-            this.tim_wm.Tick += new System.EventHandler(this.tim_wm_Tick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 21);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Volume";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(260, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 21);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "m3";
-            // 
-            // nud_volume
-            // 
-            this.nud_volume.Location = new System.Drawing.Point(110, 51);
-            this.nud_volume.Maximum = new decimal(new int[] {
-            10000000,
+            this.nud_temp.Location = new System.Drawing.Point(131, 143);
+            this.nud_temp.Name = "nud_temp";
+            this.nud_temp.Size = new System.Drawing.Size(85, 29);
+            this.nud_temp.TabIndex = 3;
+            this.nud_temp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nud_temp.Value = new decimal(new int[] {
+            25,
             0,
             0,
             0});
-            this.nud_volume.Name = "nud_volume";
-            this.nud_volume.Size = new System.Drawing.Size(130, 29);
-            this.nud_volume.TabIndex = 3;
-            this.nud_volume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(243, 94);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 21);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "m3/h";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 94);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 21);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Flowrate";
             // 
             // nud_flowrate
             // 
@@ -447,46 +420,260 @@
             0,
             0});
             // 
-            // label12
+            // nud_volume
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(269, 136);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(25, 21);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "\'C";
+            this.nud_volume.Location = new System.Drawing.Point(110, 35);
+            this.nud_volume.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nud_volume.Name = "nud_volume";
+            this.nud_volume.Size = new System.Drawing.Size(130, 29);
+            this.nud_volume.TabIndex = 3;
+            this.nud_volume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 138);
+            this.label13.Location = new System.Drawing.Point(6, 145);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(98, 21);
             this.label13.TabIndex = 2;
             this.label13.Text = "Temprature";
             // 
-            // nud_temp
+            // label12
             // 
-            this.nud_temp.Location = new System.Drawing.Point(131, 136);
-            this.nud_temp.Name = "nud_temp";
-            this.nud_temp.Size = new System.Drawing.Size(85, 29);
-            this.nud_temp.TabIndex = 3;
-            this.nud_temp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nud_temp.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(269, 143);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(25, 21);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "\'C";
             // 
-            // btn_update_wm_settings
+            // label11
             // 
-            this.btn_update_wm_settings.Location = new System.Drawing.Point(62, 220);
-            this.btn_update_wm_settings.Name = "btn_update_wm_settings";
-            this.btn_update_wm_settings.Size = new System.Drawing.Size(178, 43);
-            this.btn_update_wm_settings.TabIndex = 4;
-            this.btn_update_wm_settings.Text = "Update Setting";
-            this.btn_update_wm_settings.UseVisualStyleBackColor = true;
-            this.btn_update_wm_settings.Click += new System.EventHandler(this.btn_update_wm_settings_Click);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 94);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(76, 21);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Flowrate";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(243, 94);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 21);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "m3/h";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 21);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Volume";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(260, 37);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 21);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "m3";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbx_binary_err_code);
+            this.groupBox3.Controls.Add(this.cbx_status);
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.checkBox2);
+            this.groupBox3.Controls.Add(this.checkBox3);
+            this.groupBox3.Controls.Add(this.chk_serial_no);
+            this.groupBox3.Controls.Add(this.chk_temp);
+            this.groupBox3.Controls.Add(this.chk_rev_volume);
+            this.groupBox3.Controls.Add(this.chk_vol);
+            this.groupBox3.Controls.Add(this.chk_dt);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(615, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(302, 279);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Status and Errors";
+            // 
+            // cbx_binary_err_code
+            // 
+            this.cbx_binary_err_code.FormattingEnabled = true;
+            this.cbx_binary_err_code.Items.AddRange(new object[] {
+            "OK (0x0000)",
+            "Leakage (0x0001)   ",
+            "Pipe Burst (0x0002)   ",
+            "Reverse flow (0x0004)   ",
+            "Dry (0x0008)   ",
+            "Critical Config (0x0010)   ",
+            "Measurement Fail (0x0020)   ",
+            "Tamper (0x0040)   ",
+            "Battery (0x0080)   ",
+            "Unit change (0x0100)   ",
+            "Service required (0x0200)   "});
+            this.cbx_binary_err_code.Location = new System.Drawing.Point(110, 72);
+            this.cbx_binary_err_code.Name = "cbx_binary_err_code";
+            this.cbx_binary_err_code.Size = new System.Drawing.Size(187, 29);
+            this.cbx_binary_err_code.TabIndex = 10;
+            // 
+            // cbx_status
+            // 
+            this.cbx_status.FormattingEnabled = true;
+            this.cbx_status.Items.AddRange(new object[] {
+            "Normal: 0x00",
+            "Low Battery : 0x04",
+            "Permannent Error: 0x08",
+            "Dry or Temporary Error: 0x10",
+            "Backflow: 0x70",
+            "Manipulation: 0xD0",
+            "Burst: 0xB0",
+            "Leakage:  0x30"});
+            this.cbx_status.Location = new System.Drawing.Point(110, 34);
+            this.cbx_status.Name = "cbx_status";
+            this.cbx_status.Size = new System.Drawing.Size(187, 29);
+            this.cbx_status.TabIndex = 10;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(170, 230);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(107, 25);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Error code";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(170, 207);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(96, 25);
+            this.checkBox2.TabIndex = 8;
+            this.checkBox2.Text = "ON Time";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(170, 181);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(95, 25);
+            this.checkBox3.TabIndex = 9;
+            this.checkBox3.Text = "Flowrate";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // chk_serial_no
+            // 
+            this.chk_serial_no.AutoSize = true;
+            this.chk_serial_no.Checked = true;
+            this.chk_serial_no.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_serial_no.Location = new System.Drawing.Point(170, 155);
+            this.chk_serial_no.Name = "chk_serial_no";
+            this.chk_serial_no.Size = new System.Drawing.Size(99, 25);
+            this.chk_serial_no.TabIndex = 6;
+            this.chk_serial_no.Text = "Serial No";
+            this.chk_serial_no.UseVisualStyleBackColor = true;
+            // 
+            // chk_temp
+            // 
+            this.chk_temp.AutoSize = true;
+            this.chk_temp.Checked = true;
+            this.chk_temp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_temp.Location = new System.Drawing.Point(24, 230);
+            this.chk_temp.Name = "chk_temp";
+            this.chk_temp.Size = new System.Drawing.Size(117, 25);
+            this.chk_temp.TabIndex = 5;
+            this.chk_temp.Text = "Temprature";
+            this.chk_temp.UseVisualStyleBackColor = true;
+            // 
+            // chk_rev_volume
+            // 
+            this.chk_rev_volume.AutoSize = true;
+            this.chk_rev_volume.Checked = true;
+            this.chk_rev_volume.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_rev_volume.Location = new System.Drawing.Point(24, 207);
+            this.chk_rev_volume.Name = "chk_rev_volume";
+            this.chk_rev_volume.Size = new System.Drawing.Size(120, 25);
+            this.chk_rev_volume.TabIndex = 5;
+            this.chk_rev_volume.Text = "Rev Volume";
+            this.chk_rev_volume.UseVisualStyleBackColor = true;
+            // 
+            // chk_vol
+            // 
+            this.chk_vol.AutoSize = true;
+            this.chk_vol.Checked = true;
+            this.chk_vol.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_vol.Location = new System.Drawing.Point(24, 181);
+            this.chk_vol.Name = "chk_vol";
+            this.chk_vol.Size = new System.Drawing.Size(88, 25);
+            this.chk_vol.TabIndex = 5;
+            this.chk_vol.Text = "Volume";
+            this.chk_vol.UseVisualStyleBackColor = true;
+            // 
+            // chk_dt
+            // 
+            this.chk_dt.AutoSize = true;
+            this.chk_dt.Checked = true;
+            this.chk_dt.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_dt.Location = new System.Drawing.Point(24, 155);
+            this.chk_dt.Name = "chk_dt";
+            this.chk_dt.Size = new System.Drawing.Size(112, 25);
+            this.chk_dt.TabIndex = 4;
+            this.chk_dt.Text = "Time point";
+            this.chk_dt.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(8, 115);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(110, 21);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Data records:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 75);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 21);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Error Code:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(8, 37);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 21);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Status:";
+            // 
+            // tim_wm
+            // 
+            this.tim_wm.Interval = 1000;
+            this.tim_wm.Tick += new System.EventHandler(this.tim_wm_Tick);
             // 
             // Form1
             // 
@@ -511,9 +698,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_volume)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_flowrate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_temp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_flowrate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_volume)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -556,5 +745,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_update_wm_settings;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox chk_serial_no;
+        private System.Windows.Forms.CheckBox chk_temp;
+        private System.Windows.Forms.CheckBox chk_rev_volume;
+        private System.Windows.Forms.CheckBox chk_vol;
+        private System.Windows.Forms.CheckBox chk_dt;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbx_binary_err_code;
+        private System.Windows.Forms.ComboBox cbx_status;
     }
 }
