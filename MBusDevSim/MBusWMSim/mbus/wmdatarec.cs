@@ -377,7 +377,7 @@ namespace MBusWMSim.mbus
 
             if ((_arecords & 0x0080) > 0)
             {
-                buff = Error_Flag_Binary_Record(0x0002);
+                buff = Error_Flag_Binary_Record((UInt16)_err_code);
                 Array.Copy(buff, 0, data, curr_idx, buff.Length);
                 curr_idx += buff.Length;
             }

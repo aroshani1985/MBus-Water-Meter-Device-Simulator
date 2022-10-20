@@ -252,7 +252,7 @@ namespace MBusWMSim
 
         private void cbx_binary_err_code_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            _wmparam.ErrorCode = ((UInt32 )1 << (byte)cbx_binary_err_code.SelectedIndex);
         }
 
         private void chk_dt_CheckedChanged(object sender, EventArgs e)
