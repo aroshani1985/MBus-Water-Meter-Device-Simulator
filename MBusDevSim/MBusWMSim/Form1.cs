@@ -1,4 +1,5 @@
-﻿using MBusWMSim.spx;
+﻿using MBusWMSim.mbus;
+using MBusWMSim.spx;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,13 +24,16 @@ namespace MBusWMSim
         Color sp_txt_color = Color.Chartreuse;
         #endregion
 
-
         #region Fields - Water meter
         double volume = 0; //M3 
         double flow_rate = 3600; //M3 per hour
         double temprature = 25.0; //M3 per hour
         #endregion
 
+        #region Fields - MBUS
+        mbreqrep _mbrr;
+        byte _req_process_status;
+        #endregion
 
         #region Methods Init and constructs
         public Form1()
@@ -42,7 +46,7 @@ namespace MBusWMSim
             Init_SP();
             su1 = new sputil();
             sp_update_combobox();
-            this.ActiveControl = btn_sp_con;
+            this.ActiveControl = btn_sp_con;          
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -52,7 +56,6 @@ namespace MBusWMSim
                 is_sp_open = false;
             }
         }
-
         void Init_UI()
         {
             cbx_binary_err_code.SelectedIndex = 0;
@@ -83,6 +86,7 @@ namespace MBusWMSim
                 if (sp1.Is_Port_Open)
                 {
                     is_sp_open = true;
+                    Init_Mbus();
                 }
             }
         }
@@ -106,28 +110,8 @@ namespace MBusWMSim
         }
         private void Sp1_onRec(object sender, spRecEv e)
         {
-            /*
-            RichTextBox _txtr = txtr_general;
-            switch (curr_tab)
-            {
-                case 0:
-                    _txtr = txtr_general;
-                    break;
-                case 1:
-                    _txtr = txtr_http;
-                    break;
-
-                default:
-                    _txtr = txtr_general;
-                    break;
-            }
-            mbus_pkt = new byte[e.len];
-            Array.Copy(e.data_byte, mbus_pkt, e.len);
-            su1.SetRichText(_txtr, "[" + DateTime.Now.ToString("HH:mm:ss-fff") + "]", Color.Red);
-            su1.SetRichText(_txtr, BitConverter.ToString(e.data_byte), Color.Lime);
-            su1.SetRichText(_txtr, "\n", Color.Lime);
-            process_mbus_master_pkt(e.data_byte);
-            */
+            su1.SetRichText(txtr_main,"Master Request: " + BitConverter.ToString(e.data_byte), Color.Pink);
+            _req_process_status =  _mbrr.process_req(e.data_byte);
         }
         private void Sp1_onEv(object sender, spEvents e)
         {
@@ -233,6 +217,19 @@ namespace MBusWMSim
         }
         #endregion
 
-
+        #region Methods - MBUS
+        public void Init_Mbus()
+        {
+            if(sp1 != null && sp1.Is_Port_Open)
+            {
+                _mbrr = new mbreqrep(sp1, txtr_main);
+                print_status("M-Bud Initialized successfully.", Color.Green);
+            }
+            else
+            {
+                print_status("Cant Init Mbus, CON port err.", Color.Red);
+            }
+        }
+        #endregion
     }
 }
