@@ -205,7 +205,7 @@ namespace MBusWMSim.spx
                         spx.DiscardInBuffer();
                         spx.DiscardOutBuffer();
                         _is_sp_open = true;
-                        _last_msg_str = "Open SP OK.\r\n";
+                        _last_msg_str = "Open SP OK. ";
                         _last_msg_str += spx.PortName + " -B: " + spx.BaudRate.ToString() + " -DB: " +
                                          spx.DataBits.ToString() + " -SB: " + spx.StopBits.ToString() +
                                          " PB: " + spx.Parity.ToString() + "\r\n";

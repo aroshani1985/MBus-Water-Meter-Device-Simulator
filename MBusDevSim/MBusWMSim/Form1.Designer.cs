@@ -91,6 +91,7 @@
             this.txtr_main.Size = new System.Drawing.Size(920, 188);
             this.txtr_main.TabIndex = 1;
             this.txtr_main.Text = "";
+            this.txtr_main.TextChanged += new System.EventHandler(this.txtr_main_TextChanged);
             // 
             // tlb_sp
             // 
@@ -129,6 +130,7 @@
             this.btn_find_sp.TabIndex = 1;
             this.btn_find_sp.Text = "Find COM Ports";
             this.btn_find_sp.UseVisualStyleBackColor = true;
+            this.btn_find_sp.Click += new System.EventHandler(this.btn_find_sp_Click);
             // 
             // btn_sp_con
             // 
@@ -140,6 +142,7 @@
             this.btn_sp_con.Text = "Connect";
             this.btn_sp_con.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_sp_con.UseVisualStyleBackColor = true;
+            this.btn_sp_con.Click += new System.EventHandler(this.btn_sp_con_Click);
             // 
             // btn_sp_discon
             // 
@@ -150,6 +153,7 @@
             this.btn_sp_discon.TabIndex = 1;
             this.btn_sp_discon.Text = "Disconnect";
             this.btn_sp_discon.UseVisualStyleBackColor = true;
+            this.btn_sp_discon.Click += new System.EventHandler(this.btn_sp_discon_Click);
             // 
             // Form1
             // 

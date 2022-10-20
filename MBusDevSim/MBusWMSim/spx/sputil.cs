@@ -27,8 +27,11 @@ namespace MBusWMSim.spx
             }
             else
             {
+                rtb.SelectionColor = Color.Yellow;
+                rtb.AppendText("[" + DateTime.Now.ToString("HH:mm:ss-fff") + "] ");
                 rtb.SelectionColor = c;
                 rtb.AppendText(text);
+                rtb.AppendText("\n");
             }
         }
         public void SetText(TextBox tb, string text)
