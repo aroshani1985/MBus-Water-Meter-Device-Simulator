@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MBusWMSim.mbus.mbreqrep;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MBusWMSim
@@ -20,8 +21,6 @@ namespace MBusWMSim
         sputil su1;
         public bool is_sp_open = false;
         int sp_idx = 0;
-        bool color_select = false;
-        Color sp_txt_color = Color.Chartreuse;
         #endregion
 
         #region Fields - Water meter
@@ -33,6 +32,7 @@ namespace MBusWMSim
         #region Fields - MBUS
         mbreqrep _mbrr;
         byte _req_process_status;
+        WMparam _wmparam;
         #endregion
 
         #region Methods Init and constructs
@@ -204,6 +204,14 @@ namespace MBusWMSim
             lbl_volume.Text = String.Format("{0:0.00}", volume);
             lbl_temp.Text = temprature.ToString();
             lbl_flowrate.Text = flow_rate.ToString();
+        }
+        void update_wm_data_record_params()
+        {
+            _wmparam.Temprature = (float)temprature;
+            _wmparam.Volume = (UInt32) volume;
+            _wmparam.ErrorCode = (UInt32)cbx_binary_err_code.SelectedIndex;
+            _wmparam.Flowrate = (float)flow_rate;
+            _wmparam.OnTime = 1000;
         }
         private void btn_update_wm_settings_Click(object sender, EventArgs e)
         {

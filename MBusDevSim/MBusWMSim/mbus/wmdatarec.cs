@@ -9,7 +9,12 @@ namespace MBusWMSim.mbus
 {
     public class wmdatarec
     {
-        #region 
+        #region Fields
+        UInt32 _volume;
+        float _flowrate;
+        float _temprature;
+        UInt32 _err_code;
+        UInt32 _on_time;
         public struct Datarecord
         {
 
@@ -24,7 +29,30 @@ namespace MBusWMSim.mbus
             public byte len;
         }
         #endregion
-        
+
+        #region Constructor
+        public wmdatarec()
+        {
+
+        }
+        public wmdatarec(UInt32 Volume, float Flowrate, float Temprature, UInt32 OnTime, UInt32 ErrorCode)
+        {
+            _volume = Volume;
+            _flowrate = Flowrate;
+            _temprature = Temprature;
+            _err_code = ErrorCode;
+            _on_time = OnTime;
+        }
+        #endregion
+
+        #region 
+
+        #endregion
+
+        #region 
+
+        #endregion
+
         public byte[] DateTime_Record()
         {
             Datarecord date_time_record = new Datarecord();
@@ -287,22 +315,22 @@ namespace MBusWMSim.mbus
             byte[] buff = DateTime_Record();
             Array.Copy(buff, 0, data, 0, buff.Length);
 
-            buff = Volume_Record(1000);
+            buff = Volume_Record(_volume);
             Array.Copy(buff, 0, data, 6, buff.Length);
 
-            buff = Volume_Reverse_Record(10);
+            buff = Volume_Reverse_Record(0);
             Array.Copy(buff, 0, data, 12, buff.Length);
 
             buff = Serial_Number_Record(12345678);
             Array.Copy(buff, 0, data, 19, buff.Length);
 
-            buff = FlowRate_Record(125.6f);
+            buff = FlowRate_Record(_flowrate);
             Array.Copy(buff, 0, data, 25, buff.Length);
 
-            buff = Temperature_Record(29.36f);
+            buff = Temperature_Record(_temprature);
             Array.Copy(buff, 0, data, 31, buff.Length);
 
-            buff = Battery_Operation_Time_Record(365);
+            buff = Battery_Operation_Time_Record(_on_time);
             Array.Copy(buff, 0, data, 37, buff.Length);
 
             buff = Error_Flag_Binary_Record(0x0002);
