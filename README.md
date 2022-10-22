@@ -21,7 +21,6 @@ Wired M-Bus Water Meter Device Simulator
   - Need .Net5 desktop runtime to execute on wondows
   - Serial port configuration : Baud 9600, Data 8, Parity Even, Stop 1
   - Click start button to start water meter simulator
-  - You can use <a hfer=https://michaelrac.com/downloads/#1612439083019-fb1b3e8b-8523> free M-Bus softwate </a> as M-Bus master 
-  - 
+  - You can use free M-Bus softwate [download link](https://michaelrac.com/downloads/#1612439083019-fb1b3e8b-8523) as a M-Bus master software
 
  
